@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+root_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+task_python="$HOME/.local/lib/editor-tools/python3.14"
+if [[ -d "$task_python/tkinter" ]];then
+ export PYTHONPATH="$task_python:$task_python/lib-dynload${PYTHONPATH:+:$PYTHONPATH}"
+fi
+exec python3 "$root_dir/clipboard_history.py" "$@"

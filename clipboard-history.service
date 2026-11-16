@@ -1,0 +1,14 @@
+[Unit]
+Description=Private X11 clipboard text history on Codex desktop
+Requires=codex-desktop.service
+After=codex-desktop.service
+
+[Service]
+Type=simple
+UMask=0077
+ExecStart=%h/.local/bin/codex-desktop run %h/.install/clipboard/bin/clipboard-history
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
